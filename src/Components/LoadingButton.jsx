@@ -3,7 +3,7 @@ const LoadingButton = () => {
     <div className="h-[800px] flex justify-center items-center">
       <button className="btn">
         <span className="loading loading-spinner"></span>
-        ....Loading
+        Loading
       </button>
     </div>
   );

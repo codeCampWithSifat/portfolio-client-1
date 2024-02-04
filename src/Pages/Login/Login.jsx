@@ -8,6 +8,7 @@ import {
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -53,6 +54,7 @@ const Login = () => {
       setDisabled(true);
     }
   };
+
   return (
     <>
       <Helmet>
@@ -109,6 +111,7 @@ const Login = () => {
             </Link>
           </p>
           <div className="divider">OR</div>
+          <SocialLogin />
         </div>
       </div>
     </>

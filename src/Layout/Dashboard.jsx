@@ -1,13 +1,23 @@
-import { FaCalendar, FaCartPlus } from "react-icons/fa6";
+import {
+  FaBook,
+  FaCalendar,
+  FaList,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa6";
 import { Link, Outlet } from "react-router-dom";
-import { FaHome, FaShoppingBag } from "react-icons/fa";
-import { GiVibratingShield } from "react-icons/gi";
-import { TbBrandBooking } from "react-icons/tb";
+import { FaAd, FaHome, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+
 import { MdContactMail, MdOutlineMenu } from "react-icons/md";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
+
+  // TODO: GET isAdmin Value From The Database
+  const [isAdmin] = useAdmin();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -29,45 +39,73 @@ const Dashboard = () => {
         ></label>
         <ul className="menu menu_item p-4 w-80 min-h-full text-white  bg-indigo-600">
           {/* Sidebar content here */}
-          <li>
-            <Link to="/dashboard/userHome">
-              {" "}
-              <FaHome />
-              User Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/reservation">
-              {" "}
-              <FaCalendar />
-              Reservation
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/dashboard/cart">
-              {" "}
-              <FaCartPlus /> My Cart{" "}
-              <span className="text-black-800 font-bold">
-                +{cart.length ? cart.length : 0}
-              </span>
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/dashboard/review">
-              {" "}
-              <GiVibratingShield />
-              Add A Review
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/bookings">
-              {" "}
-              <TbBrandBooking />
-              My Bookings
-            </Link>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <Link to="/dashboard/adminHome">
+                  <FaHome></FaHome>
+                  Admin Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/addItems">
+                  <FaUtensils></FaUtensils>
+                  Add Items
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manageItems">
+                  <FaList></FaList>
+                  Manage Items
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/bookings">
+                  <FaBook></FaBook>
+                  Manage Bookings
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/users">
+                  <FaUsers></FaUsers>
+                  All Users
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/dashboard/userHome">
+                  <FaHome></FaHome>
+                  User Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/reservation">
+                  <FaCalendar></FaCalendar>
+                  Reservation
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart>
+                  My Cart ({cart.length})
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/review">
+                  <FaAd></FaAd>
+                  Add a Review
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/bookings">
+                  <FaList></FaList>
+                  My Bookings
+                </Link>
+              </li>
+            </>
+          )}
           <div className="divider divider-primary"></div>
           <li>
             <Link to="/">
