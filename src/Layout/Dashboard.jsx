@@ -11,9 +11,11 @@ import { FaAd, FaHome, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
 import { MdContactMail, MdOutlineMenu } from "react-icons/md";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useMenu from "../hooks/useMenu";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const [menu] = useMenu();
 
   // TODO: GET isAdmin Value From The Database
   const [isAdmin] = useAdmin();
@@ -57,6 +59,7 @@ const Dashboard = () => {
                 <Link to="/dashboard/manageItems">
                   <FaList></FaList>
                   Manage Items
+                  <span className="text-black mr-1"> + {menu.length}</span>
                 </Link>
               </li>
               <li>
