@@ -114,7 +114,7 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menu/${params.id}`),
+          fetch(`https://protfolio-server-1.vercel.app/menu/${params.id}`),
       },
       {
         path: "adminHome",

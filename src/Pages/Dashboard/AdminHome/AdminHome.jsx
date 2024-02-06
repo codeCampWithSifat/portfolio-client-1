@@ -33,7 +33,6 @@ const AdminHome = () => {
     queryKey: ["order-stats"],
     queryFn: async () => {
       const res = await axiosSecure.get("/order-stats");
-      console.log(res);
       return res.data;
     },
   });
