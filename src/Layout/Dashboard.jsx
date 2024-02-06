@@ -84,9 +84,9 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/reservation">
+                <Link to="/dashboard/paymentHistory">
                   <FaCalendar></FaCalendar>
-                  Reservation
+                  Payment History
                 </Link>
               </li>
               <li>
