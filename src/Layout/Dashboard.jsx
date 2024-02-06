@@ -138,6 +138,12 @@ const Dashboard = () => {
               Contact
             </Link>
           </li>
+          <li>
+            <Link to="/dashboard/paymentHistory">
+              <FaCalendar></FaCalendar>
+              Payment History
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
